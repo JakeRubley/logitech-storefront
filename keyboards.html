@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboards & Combos | Logitech for Business</title>
+<style>
+:root {
+  --dk: #131921; --dk2: #232f3e; --green: #00a651; --green-hover: #008c45;
+  --link: #007185; --link-hover: #c7511f; --orange: #febd69; --yellow: #ffd814;
+  --yellow-hover: #f7ca00; --border: #d5d9d9; --text: #0f1111; --muted: #565959;
+  --bg: #f7f7f7; --card-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 2px 8px rgba(0,0,0,.1);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.12); --transition: all .2s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: #fff; color: var(--text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+.hd { background: var(--dk); padding: 8px 20px; display: flex; align-items: center; gap: 14px; }
+.hd-logo { flex-shrink: 0; } .hd-logo b { color: #00a8e1; font-size: 22px; font-style: italic; }
+.hd-logo small { color: #f90; font-size: 13px; font-weight: 700; font-style: italic; display: block; margin-top: -3px; }
+.hd-loc { color: #ccc; font-size: 11px; flex-shrink: 0; } .hd-loc strong { color: #fff; font-size: 13px; display: block; }
+.hd-search { flex: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+.hd-search select { background: #e6e6e6; border: none; padding: 0 8px; font-size: 11px; }
+.hd-search input { flex: 1; border: none; padding: 0 12px; font-size: 15px; outline: none; }
+.hd-search button { background: var(--orange); border: none; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.hd-search svg { width: 20px; height: 20px; }
+.hd-r { display: flex; gap: 18px; align-items: center; flex-shrink: 0; }
+.hd-r div { color: #fff; font-size: 11px; line-height: 1.3; white-space: nowrap; } .hd-r div strong { font-size: 13px; display: block; }
+.hd-r .cart { font-size: 13px; font-weight: 700; } .hd-r .cart span { color: #f90; font-size: 18px; }
+.hd-sub { background: var(--dk2); padding: 6px 20px; display: flex; gap: 18px; overflow-x: auto; }
+.hd-sub a { color: #fff; font-size: 13px; white-space: nowrap; } .hd-sub a:hover { text-decoration: underline; }
+
+.sn { background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; height: 52px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.sn-brand { display: flex; align-items: center; gap: 10px; padding-right: 20px; border-right: 1px solid var(--border); height: 100%; }
+.sn-brand img { height: 26px; } .sn-brand span { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -.3px; }
+.sn-links { display: flex; gap: 0; margin-left: 8px; height: 100%; }
+.sn-links a { display: flex; align-items: center; padding: 0 16px; font-size: 14px; font-weight: 500; color: var(--text); height: 100%; border-bottom: 3px solid transparent; transition: var(--transition); }
+.sn-links a:hover, .sn-links a.active { border-bottom-color: var(--green); color: var(--green); }
+
+.cat-hero { width: 100%; overflow: hidden; background: #f3f3f3; }
+.cat-hero img { width: 100%; max-height: 320px; object-fit: cover; object-position: center; }
+
+.breadcrumb { padding: 14px 24px; font-size: 13px; color: var(--muted); max-width: 1440px; margin: 0 auto; }
+.breadcrumb a { color: var(--link); } .breadcrumb a:hover { text-decoration: underline; color: var(--link-hover); }
+
+.page-title { padding: 0 24px 8px; max-width: 1440px; margin: 0 auto; }
+.page-title h1 { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+.page-title p { font-size: 14px; color: var(--muted); margin-top: 4px; margin-bottom: 24px; }
+
+.section { padding: 0 24px 48px; max-width: 1440px; margin: 0 auto; }
+.section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prod-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: 1px solid #eee; transition: var(--transition); }
+.prod-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border); }
+.prod-card-img { aspect-ratio: 1; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.prod-card-img img { max-height: 160px; object-fit: contain; }
+.prod-card-info { padding: 16px 18px 20px; }
+.prod-card-info h4 { font-size: 14px; font-weight: 600; line-height: 1.35; margin-bottom: 8px; color: var(--text); min-height: 38px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-card-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+.prod-card-stars .stars { color: #de7921; font-size: 13px; letter-spacing: 1px; }
+.prod-card-stars .count { font-size: 12px; color: var(--link); }
+.prod-card-price { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.prod-card-price .cents { font-size: 12px; vertical-align: super; }
+.prod-card-price .was { font-size: 13px; color: var(--muted); text-decoration: line-through; font-weight: 400; margin-left: 8px; }
+.prod-card-badge { display: inline-block; background: #cc0c39; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+.prod-card-ship { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.prod-card-ship b { color: var(--text); }
+.prod-card-btn { display: block; width: 100%; background: var(--yellow); border: none; padding: 9px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: var(--transition); }
+.prod-card-btn:hover { background: var(--yellow-hover); }
+
+.ft { background: var(--dk2); color: #ddd; padding: 40px 24px; }
+.ft-inner { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.ft h4 { color: #fff; font-size: 15px; margin-bottom: 14px; }
+.ft a { display: block; font-size: 13px; color: #ddd; margin-bottom: 8px; transition: var(--transition); }
+.ft a:hover { color: #fff; text-decoration: underline; }
+.ft-bottom { background: var(--dk); padding: 20px; text-align: center; }
+.ft-bottom p { color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-logo"><b>amazon</b><small>business</small></div>
+  <div class="hd-loc">Deliver to<strong>Your Business</strong></div>
+  <div class="hd-search">
+    <select><option>All Departments</option></select>
+    <input placeholder="Search Logitech for Business">
+    <button><svg viewBox="0 0 24 24" fill="#333"><path d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/></svg></button>
+  </div>
+  <div class="hd-r">
+    <div>Hello, sign in<strong>Account & Lists</strong></div>
+    <div>Returns<strong>& Orders</strong></div>
+    <div class="cart"><span>&#128722;</span> Cart</div>
+  </div>
+</header>
+<div class="hd-sub">
+  <a href="#">All</a><a href="#">Business Analytics</a><a href="#">Buy Again</a><a href="#">Business Deals</a><a href="#">Manage Approval</a><a href="#">Business Prime</a>
+</div>
+
+<nav class="sn">
+  <a class="sn-brand" href="index.html">
+    <img src="assets/logos/logitech-business-official.svg" alt="Logitech for Business" style="height:22px;">
+
+  </a>
+  <div class="sn-links">
+    <a href="index.html">Home</a>
+    <a href="keyboards.html" class="active">Keyboards & Combos</a>
+    <a href="mice.html">Mice</a>
+    <a href="headsets.html">Headsets</a>
+    <a href="webcams.html">Webcams</a>
+    <a href="conferencing.html">Video Conferencing</a>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<div style="max-width:1440px; margin:0 auto; padding:16px 24px 0;">
+  <img src="assets/lifestyle/kb-amz-banner-1.png" alt="Logitech Keyboards" style="width:100%; border-radius:var(--card-radius); box-shadow:var(--shadow-md); object-fit:cover;">
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Logitech for Business</a> &rsaquo; <strong>Keyboards & Combos</strong>
+</div>
+
+<div class="page-title">
+  <h1>Business Keyboards & Combos</h1>
+  <p>Professional wireless keyboards and keyboard-mouse combos engineered for enterprise productivity. IT-managed, secure, and built to last.</p>
+</div>
+
+<!-- MARKETING SHOWCASE: Amazon hero images -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:1fr 1fr; gap:18px;">
+  <img src="assets/lifestyle/kb-amz-hero-1.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-md); object-fit:contain; background:#fff;">
+  <img src="assets/lifestyle/kb-amz-hero-2.jpg" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-md); object-fit:contain; background:#fff;">
+</div>
+
+<!-- FULL-WIDTH BANNER -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px;">
+  <img src="assets/lifestyle/kb-amz-banner-2.png" alt="Logitech Keyboards" style="width:100%; border-radius:var(--card-radius); box-shadow:var(--shadow-md); object-fit:cover;">
+</div>
+
+<!-- PRODUCT TILES -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:repeat(4, 1fr); gap:18px;">
+  <img src="assets/lifestyle/kb-amz-tile-1.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); object-fit:contain; background:#fff;">
+  <img src="assets/lifestyle/kb-amz-tile-2.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); object-fit:contain; background:#fff;">
+  <img src="assets/lifestyle/kb-amz-tile-3.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); object-fit:contain; background:#fff;">
+  <img src="assets/lifestyle/kb-amz-tile-4.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); object-fit:contain; background:#fff;">
+</div>
+
+<!-- ADDITIONAL HERO + SMALL TILE -->
+<div style="max-width:1440px; margin:0 auto 48px; padding:0 24px; display:grid; grid-template-columns:2fr 1fr; gap:18px;">
+  <img src="assets/lifestyle/kb-amz-hero-3.jpg" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-md); object-fit:contain; background:#fff;">
+  <img src="assets/lifestyle/kb-amz-sm-1.png" alt="Logitech Keyboards" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); object-fit:contain; background:#fff;">
+</div>
+
+<!-- KEYBOARDS -->
+<div class="section">
+  <h2>Keyboards</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mx-keys-biz.png" alt="MX Keys for Business"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MX Keys for Business Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">2,341</span></div>
+        <div class="prod-card-price">$119<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mx-keys-s.png" alt="MX Keys S"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MX Keys S Advanced Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">1,847</span></div>
+        <div class="prod-card-price">$99<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/ergo-k860-biz.png" alt="ERGO K860 for Business"></div>
+      <div class="prod-card-info">
+        <h4>Logitech ERGO K860 for Business Split Ergonomic Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">4,521</span></div>
+        <div class="prod-card-price">$129<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/ergo-k860.png" alt="ERGO K860"></div>
+      <div class="prod-card-info">
+        <h4>Logitech ERGO K860 Wireless Ergonomic Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">3,892</span></div>
+        <div class="prod-card-price">$119<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/k980-solar-biz.png" alt="K980 Solar for Business"></div>
+      <div class="prod-card-info">
+        <h4>Logitech K980 Solar for Business Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">312</span></div>
+        <div class="prod-card-price">$89<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/wave-keys-biz.png" alt="Wave Keys for Business"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Wave Keys for Business Ergonomic Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">987</span></div>
+        <div class="prod-card-price">$59<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/signature-slim-k950.png" alt="Signature Slim K950"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Signature Slim K950 Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">654</span></div>
+        <div class="prod-card-price">$79<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mx-mechanical.png" alt="MX Mechanical"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MX Mechanical Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">2,103</span></div>
+        <div class="prod-card-price">$149<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/alto-keys-k98m.png" alt="Alto Keys K98M"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Alto Keys K98M Wireless Keyboard</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">178</span></div>
+        <div class="prod-card-price">$69<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMBOS -->
+<div class="section">
+  <h2>Keyboard & Mouse Combos</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mx-keys-combo-biz.png" alt="MX Keys Combo for Business"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">Best Seller</span>
+        <h4>Logitech MX Keys Combo for Business</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">1,456</span></div>
+        <div class="prod-card-price">$199<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mk950-combo-biz.png" alt="MK950 Combo for Business"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MK950 Signature Combo for Business</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">523</span></div>
+        <div class="prod-card-price">$119<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mx-keys-s-combo.png" alt="MX Keys S Combo"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MX Keys S Combo Keyboard & Mouse</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">891</span></div>
+        <div class="prod-card-price">$179<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mk650-combo.png" alt="MK650 Combo"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MK650 Signature Wireless Combo</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">1,234</span></div>
+        <div class="prod-card-price">$79<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/wave-keys-lift-combo.png" alt="Wave Keys + Lift Combo"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Wave Keys + Lift Ergo Combo</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">456</span></div>
+        <div class="prod-card-price">$99<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mk850-combo.png" alt="MK850 Combo"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MK850 Performance Wireless Combo</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">3,567</span></div>
+        <div class="prod-card-price">$89<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/mk370-combo.png" alt="MK370 Combo"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MK370 Combo for Business</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">789</span></div>
+        <div class="prod-card-price">$49<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <div class="ft-inner">
+    <div><h4>Logitech for Business</h4><a href="#">About Logitech B2B</a><a href="#">Enterprise Solutions</a><a href="#">Case Studies</a><a href="#">Partner Program</a></div>
+    <div><h4>Product Categories</h4><a href="keyboards.html">Keyboards & Combos</a><a href="mice.html">Mice</a><a href="headsets.html">Headsets & Earbuds</a><a href="webcams.html">Webcams</a><a href="conferencing.html">Video Conferencing</a></div>
+    <div><h4>Resources</h4><a href="#">Room Configurator</a><a href="#">Logi Tune Software</a><a href="#">Logi Options+ App</a><a href="#">IT Deployment Guides</a></div>
+    <div><h4>Support</h4><a href="#">Business Support</a><a href="#">Warranty Info</a><a href="#">Contact Sales</a><a href="#">Returns & Exchanges</a></div>
+  </div>
+</footer>
+<div class="ft-bottom"><p>&copy; 2026 Logitech. All rights reserved. Logitech, Logi, and their logos are trademarks of Logitech.</p></div>
+</body>
+</html>

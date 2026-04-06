@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Conferencing | Logitech for Business</title>
+<style>
+:root {
+  --dk: #131921; --dk2: #232f3e; --green: #00a651; --green-hover: #008c45;
+  --link: #007185; --link-hover: #c7511f; --orange: #febd69; --yellow: #ffd814;
+  --yellow-hover: #f7ca00; --border: #d5d9d9; --text: #0f1111; --muted: #565959;
+  --bg: #f7f7f7; --card-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 2px 8px rgba(0,0,0,.1);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.12); --transition: all .2s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: #fff; color: var(--text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+.hd { background: var(--dk); padding: 8px 20px; display: flex; align-items: center; gap: 14px; }
+.hd-logo { flex-shrink: 0; } .hd-logo b { color: #00a8e1; font-size: 22px; font-style: italic; }
+.hd-logo small { color: #f90; font-size: 13px; font-weight: 700; font-style: italic; display: block; margin-top: -3px; }
+.hd-loc { color: #ccc; font-size: 11px; flex-shrink: 0; } .hd-loc strong { color: #fff; font-size: 13px; display: block; }
+.hd-search { flex: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+.hd-search select { background: #e6e6e6; border: none; padding: 0 8px; font-size: 11px; }
+.hd-search input { flex: 1; border: none; padding: 0 12px; font-size: 15px; outline: none; }
+.hd-search button { background: var(--orange); border: none; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.hd-search svg { width: 20px; height: 20px; }
+.hd-r { display: flex; gap: 18px; align-items: center; flex-shrink: 0; }
+.hd-r div { color: #fff; font-size: 11px; line-height: 1.3; white-space: nowrap; } .hd-r div strong { font-size: 13px; display: block; }
+.hd-r .cart { font-size: 13px; font-weight: 700; } .hd-r .cart span { color: #f90; font-size: 18px; }
+.hd-sub { background: var(--dk2); padding: 6px 20px; display: flex; gap: 18px; overflow-x: auto; }
+.hd-sub a { color: #fff; font-size: 13px; white-space: nowrap; } .hd-sub a:hover { text-decoration: underline; }
+
+.sn { background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; height: 52px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.sn-brand { display: flex; align-items: center; gap: 10px; padding-right: 20px; border-right: 1px solid var(--border); height: 100%; }
+.sn-brand img { height: 26px; } .sn-brand span { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -.3px; }
+.sn-links { display: flex; gap: 0; margin-left: 8px; height: 100%; }
+.sn-links a { display: flex; align-items: center; padding: 0 16px; font-size: 14px; font-weight: 500; color: var(--text); height: 100%; border-bottom: 3px solid transparent; transition: var(--transition); }
+.sn-links a:hover, .sn-links a.active { border-bottom-color: var(--green); color: var(--green); }
+
+.cat-hero { width: 100%; overflow: hidden; background: #f3f3f3; }
+.cat-hero img { width: 100%; max-height: 320px; object-fit: cover; object-position: center; }
+
+.breadcrumb { padding: 14px 24px; font-size: 13px; color: var(--muted); max-width: 1440px; margin: 0 auto; }
+.breadcrumb a { color: var(--link); } .breadcrumb a:hover { text-decoration: underline; color: var(--link-hover); }
+
+.page-title { padding: 0 24px 8px; max-width: 1440px; margin: 0 auto; }
+.page-title h1 { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+.page-title p { font-size: 14px; color: var(--muted); margin-top: 4px; margin-bottom: 24px; }
+
+.section { padding: 0 24px 48px; max-width: 1440px; margin: 0 auto; }
+.section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prod-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: 1px solid #eee; transition: var(--transition); }
+.prod-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border); }
+.prod-card-img { aspect-ratio: 1; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.prod-card-img img { max-height: 160px; object-fit: contain; }
+.prod-card-info { padding: 16px 18px 20px; }
+.prod-card-info h4 { font-size: 14px; font-weight: 600; line-height: 1.35; margin-bottom: 8px; color: var(--text); min-height: 38px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-card-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+.prod-card-stars .stars { color: #de7921; font-size: 13px; letter-spacing: 1px; }
+.prod-card-stars .count { font-size: 12px; color: var(--link); }
+.prod-card-price { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.prod-card-price .cents { font-size: 12px; vertical-align: super; }
+.prod-card-badge { display: inline-block; background: #cc0c39; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+.prod-card-ship { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.prod-card-ship b { color: var(--text); }
+.prod-card-btn { display: block; width: 100%; background: var(--yellow); border: none; padding: 9px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: var(--transition); }
+.prod-card-btn:hover { background: var(--yellow-hover); }
+
+.ft { background: var(--dk2); color: #ddd; padding: 40px 24px; }
+.ft-inner { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.ft h4 { color: #fff; font-size: 15px; margin-bottom: 14px; }
+.ft a { display: block; font-size: 13px; color: #ddd; margin-bottom: 8px; transition: var(--transition); }
+.ft a:hover { color: #fff; text-decoration: underline; }
+.ft-bottom { background: var(--dk); padding: 20px; text-align: center; }
+.ft-bottom p { color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-logo"><b>amazon</b><small>business</small></div>
+  <div class="hd-loc">Deliver to<strong>Your Business</strong></div>
+  <div class="hd-search">
+    <select><option>All Departments</option></select>
+    <input placeholder="Search Logitech for Business">
+    <button><svg viewBox="0 0 24 24" fill="#333"><path d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/></svg></button>
+  </div>
+  <div class="hd-r">
+    <div>Hello, sign in<strong>Account & Lists</strong></div>
+    <div>Returns<strong>& Orders</strong></div>
+    <div class="cart"><span>&#128722;</span> Cart</div>
+  </div>
+</header>
+<div class="hd-sub">
+  <a href="#">All</a><a href="#">Business Analytics</a><a href="#">Buy Again</a><a href="#">Business Deals</a><a href="#">Manage Approval</a><a href="#">Business Prime</a>
+</div>
+
+<nav class="sn">
+  <a class="sn-brand" href="index.html">
+    <img src="assets/logos/logitech-business-official.svg" alt="Logitech for Business" style="height:22px;">
+
+  </a>
+  <div class="sn-links">
+    <a href="index.html">Home</a>
+    <a href="keyboards.html">Keyboards & Combos</a>
+    <a href="mice.html">Mice</a>
+    <a href="headsets.html">Headsets</a>
+    <a href="webcams.html">Webcams</a>
+    <a href="conferencing.html" class="active">Video Conferencing</a>
+  </div>
+</nav>
+
+<section class="cat-hero">
+  <img src="assets/lifestyle/plp-video-conferencing-banner.png" alt="Video Conferencing">
+</section>
+
+<div class="breadcrumb">
+  <a href="index.html">Logitech for Business</a> &rsaquo; <strong>Video Conferencing</strong>
+</div>
+
+<div class="page-title">
+  <h1>Video Conferencing & Conference Cameras</h1>
+  <p>Complete room solutions from huddle spaces to boardrooms. Certified for Microsoft Teams, Zoom, and Google Meet. AI-powered cameras, audio systems, and room controls.</p>
+</div>
+
+<!-- VIDEO CONFERENCING PRODUCTS SHOWCASE -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+  <div style="background:#f8f8f8; border-radius:12px; padding:28px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/rally-bar.png" alt="" style="height:120px; object-fit:contain; margin:0 auto 14px;">
+    <h4 style="font-size:14px; font-weight:700; margin-bottom:4px;">Rally Bar</h4>
+    <p style="font-size:11px; color:var(--muted);">Large rooms &middot; 4K &middot; AI</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:28px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/rally-bar-mini.png" alt="" style="height:120px; object-fit:contain; margin:0 auto 14px;">
+    <h4 style="font-size:14px; font-weight:700; margin-bottom:4px;">Rally Bar Mini</h4>
+    <p style="font-size:11px; color:var(--muted);">Small/medium rooms</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:28px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/meetup-2.png" alt="" style="height:120px; object-fit:contain; margin:0 auto 14px;">
+    <h4 style="font-size:14px; font-weight:700; margin-bottom:4px;">MeetUp 2</h4>
+    <p style="font-size:11px; color:var(--muted);">All-in-one &middot; Huddle rooms</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:28px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/rally-ai-camera-pro.png" alt="" style="height:120px; object-fit:contain; margin:0 auto 14px;">
+    <h4 style="font-size:14px; font-weight:700; margin-bottom:4px;">Rally AI Camera Pro</h4>
+    <p style="font-size:11px; color:var(--muted);">AI-powered &middot; PTZ</p>
+  </div>
+</div>
+
+<!-- ROOM TYPE SHOWCASE -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px;">
+  <h2 style="font-size:22px; font-weight:700; margin-bottom:20px;">Solutions for Every Room</h2>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+    <div style="border-radius:12px; overflow:hidden; position:relative; aspect-ratio:4/3; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/meeting-conference-wide.jpg" alt="" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(transparent, rgba(0,0,0,.7));">
+        <h4 style="color:#fff; font-size:14px; font-weight:700;">Conference Rooms</h4>
+        <p style="color:rgba(255,255,255,.75); font-size:11px;">Rally Bar &middot; Rally AI Camera</p>
+      </div>
+    </div>
+    <div style="border-radius:12px; overflow:hidden; position:relative; aspect-ratio:4/3; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/meeting-huddle-wide.jpg" alt="" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(transparent, rgba(0,0,0,.7));">
+        <h4 style="color:#fff; font-size:14px; font-weight:700;">Huddle Spaces</h4>
+        <p style="color:rgba(255,255,255,.75); font-size:11px;">Rally Bar Huddle &middot; MeetUp 2</p>
+      </div>
+    </div>
+    <div style="border-radius:12px; overflow:hidden; position:relative; aspect-ratio:4/3; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/meeting-ideation-wide.jpg" alt="" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(transparent, rgba(0,0,0,.7));">
+        <h4 style="color:#fff; font-size:14px; font-weight:700;">Ideation Spaces</h4>
+        <p style="color:rgba(255,255,255,.75); font-size:11px;">Rally Board &middot; Scribe</p>
+      </div>
+    </div>
+    <div style="border-radius:12px; overflow:hidden; position:relative; aspect-ratio:4/3; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/meeting-immersive-wide.jpg" alt="" style="width:100%; height:100%; object-fit:cover;">
+      <div style="position:absolute; bottom:0; left:0; right:0; padding:16px; background:linear-gradient(transparent, rgba(0,0,0,.7));">
+        <h4 style="color:#fff; font-size:14px; font-weight:700;">Immersive Rooms</h4>
+        <p style="color:rgba(255,255,255,.75); font-size:11px;">Sight &middot; Rally Bar &middot; Tap IP</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ROOM CONTROLLERS & ACCESSORIES -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/tap-ip.png" alt="" style="height:100px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Tap IP</h4>
+    <p style="font-size:11px; color:var(--muted);">Room controller</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/tap-scheduler.png" alt="" style="height:100px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Tap Scheduler</h4>
+    <p style="font-size:11px; color:var(--muted);">Room booking panel</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/sight.png" alt="" style="height:100px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Sight</h4>
+    <p style="font-size:11px; color:var(--muted);">AI tabletop camera</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/scribe.png" alt="" style="height:100px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Scribe</h4>
+    <p style="font-size:11px; color:var(--muted);">Whiteboard camera</p>
+  </div>
+</div>
+
+<!-- PLATFORM PARTNERS -->
+<div style="max-width:1440px; margin:0 auto 48px; padding:0 24px;">
+  <h2 style="font-size:22px; font-weight:700; margin-bottom:20px;">Certified Platforms</h2>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+    <div style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/promo-microsoft-rooms.jpg" alt="" style="width:100%; aspect-ratio:1; object-fit:contain; background:#f8f8f8; padding:16px;">
+      <div style="padding:14px 16px; background:#fff;"><h4 style="font-size:14px; font-weight:700;">Microsoft Teams Rooms</h4></div>
+    </div>
+    <div style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/promo-google-rooms.jpg" alt="" style="width:100%; aspect-ratio:1; object-fit:contain; background:#f8f8f8; padding:16px;">
+      <div style="padding:14px 16px; background:#fff;"><h4 style="font-size:14px; font-weight:700;">Google Meet Rooms</h4></div>
+    </div>
+    <div style="border-radius:12px; overflow:hidden; box-shadow:var(--shadow-sm);">
+      <img src="assets/lifestyle/promo-zoom-rooms.jpg" alt="" style="width:100%; aspect-ratio:1; object-fit:contain; background:#f8f8f8; padding:16px;">
+      <div style="padding:14px 16px; background:#fff;"><h4 style="font-size:14px; font-weight:700;">Zoom Rooms</h4></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Conference Cameras & Video Bars</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-bar.png" alt="Rally Bar"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">Best Seller</span>
+        <h4>Logitech Rally Bar All-in-One Video Conference System</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">89</span></div>
+        <div class="prod-card-price">$2,999<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-bar-mini.png" alt="Rally Bar Mini"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Rally Bar Mini Video Conference System</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">156</span></div>
+        <div class="prod-card-price">$1,999<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-bar-huddle.png" alt="Rally Bar Huddle"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">New</span>
+        <h4>Logitech Rally Bar Huddle All-in-One Video Bar</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">67</span></div>
+        <div class="prod-card-price">$1,499<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/meetup-2.png" alt="MeetUp 2"></div>
+      <div class="prod-card-info">
+        <h4>Logitech MeetUp 2 Conference Camera</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">234</span></div>
+        <div class="prod-card-price">$1,199<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>AI Cameras</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-ai-camera-pro.png" alt="Rally AI Camera Pro"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">New</span>
+        <h4>Logitech Rally AI Camera Pro</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">45</span></div>
+        <div class="prod-card-price">$2,499<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-ai-camera.png" alt="Rally AI Camera"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Rally AI Camera</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">123</span></div>
+        <div class="prod-card-price">$1,799<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/sight.png" alt="Sight"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Sight AI Tabletop Camera</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">78</span></div>
+        <div class="prod-card-price">$2,999<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/scribe.png" alt="Scribe"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Scribe AI Whiteboard Camera</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">345</span></div>
+        <div class="prod-card-price">$1,199<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Displays & Room Controls</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/rally-board-65.png" alt="Rally Board 65"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">New</span>
+        <h4>Logitech Rally Board 65 Interactive Display</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">34</span></div>
+        <div class="prod-card-price">$4,999<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Fri, Apr 10</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/tap-ip.png" alt="Tap IP"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Tap IP Touch Controller</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">189</span></div>
+        <div class="prod-card-price">$999<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/tap-scheduler.png" alt="Tap Scheduler"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Tap Scheduler Room Booking Panel</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">267</span></div>
+        <div class="prod-card-price">$599<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/roommate.png" alt="RoomMate"></div>
+      <div class="prod-card-info">
+        <h4>Logitech RoomMate Computing Appliance</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">98</span></div>
+        <div class="prod-card-price">$1,499<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Accessories & Add-ons</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/extend.png" alt="Extend"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Extend USB-C BYOD Hub</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">156</span></div>
+        <div class="prod-card-price">$349<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/logi-dock-flex.png" alt="Logi Dock Flex"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Logi Dock Flex Docking Station</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">87</span></div>
+        <div class="prod-card-price">$699<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/logi-dock-focus-kit.png" alt="Logi Dock Focus Kit"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Logi Dock Focus Room Kit</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">45</span></div>
+        <div class="prod-card-price">$899<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/spot-sensor.png" alt="Spot Sensor"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Spot Room Occupancy Sensor</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">56</span></div>
+        <div class="prod-card-price">$249<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <div class="ft-inner">
+    <div><h4>Logitech for Business</h4><a href="#">About Logitech B2B</a><a href="#">Enterprise Solutions</a><a href="#">Case Studies</a><a href="#">Partner Program</a></div>
+    <div><h4>Product Categories</h4><a href="keyboards.html">Keyboards & Combos</a><a href="mice.html">Mice</a><a href="headsets.html">Headsets & Earbuds</a><a href="webcams.html">Webcams</a><a href="conferencing.html">Video Conferencing</a></div>
+    <div><h4>Resources</h4><a href="#">Room Configurator</a><a href="#">Logi Tune Software</a><a href="#">Logi Options+ App</a><a href="#">IT Deployment Guides</a></div>
+    <div><h4>Support</h4><a href="#">Business Support</a><a href="#">Warranty Info</a><a href="#">Contact Sales</a><a href="#">Returns & Exchanges</a></div>
+  </div>
+</footer>
+<div class="ft-bottom"><p>&copy; 2026 Logitech. All rights reserved. Logitech, Logi, and their logos are trademarks of Logitech.</p></div>
+</body>
+</html>

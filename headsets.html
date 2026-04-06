@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headsets & Earbuds | Logitech for Business</title>
+<style>
+:root {
+  --dk: #131921; --dk2: #232f3e; --green: #00a651; --green-hover: #008c45;
+  --link: #007185; --link-hover: #c7511f; --orange: #febd69; --yellow: #ffd814;
+  --yellow-hover: #f7ca00; --border: #d5d9d9; --text: #0f1111; --muted: #565959;
+  --bg: #f7f7f7; --card-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08); --shadow-md: 0 2px 8px rgba(0,0,0,.1);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.12); --transition: all .2s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: #fff; color: var(--text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+.hd { background: var(--dk); padding: 8px 20px; display: flex; align-items: center; gap: 14px; }
+.hd-logo { flex-shrink: 0; } .hd-logo b { color: #00a8e1; font-size: 22px; font-style: italic; }
+.hd-logo small { color: #f90; font-size: 13px; font-weight: 700; font-style: italic; display: block; margin-top: -3px; }
+.hd-loc { color: #ccc; font-size: 11px; flex-shrink: 0; } .hd-loc strong { color: #fff; font-size: 13px; display: block; }
+.hd-search { flex: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+.hd-search select { background: #e6e6e6; border: none; padding: 0 8px; font-size: 11px; }
+.hd-search input { flex: 1; border: none; padding: 0 12px; font-size: 15px; outline: none; }
+.hd-search button { background: var(--orange); border: none; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.hd-search svg { width: 20px; height: 20px; }
+.hd-r { display: flex; gap: 18px; align-items: center; flex-shrink: 0; }
+.hd-r div { color: #fff; font-size: 11px; line-height: 1.3; white-space: nowrap; } .hd-r div strong { font-size: 13px; display: block; }
+.hd-r .cart { font-size: 13px; font-weight: 700; } .hd-r .cart span { color: #f90; font-size: 18px; }
+.hd-sub { background: var(--dk2); padding: 6px 20px; display: flex; gap: 18px; overflow-x: auto; }
+.hd-sub a { color: #fff; font-size: 13px; white-space: nowrap; } .hd-sub a:hover { text-decoration: underline; }
+
+.sn { background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; height: 52px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.sn-brand { display: flex; align-items: center; gap: 10px; padding-right: 20px; border-right: 1px solid var(--border); height: 100%; }
+.sn-brand img { height: 26px; } .sn-brand span { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -.3px; }
+.sn-links { display: flex; gap: 0; margin-left: 8px; height: 100%; }
+.sn-links a { display: flex; align-items: center; padding: 0 16px; font-size: 14px; font-weight: 500; color: var(--text); height: 100%; border-bottom: 3px solid transparent; transition: var(--transition); }
+.sn-links a:hover, .sn-links a.active { border-bottom-color: var(--green); color: var(--green); }
+
+.cat-hero { width: 100%; overflow: hidden; background: #f3f3f3; }
+.cat-hero img { width: 100%; max-height: 320px; object-fit: cover; object-position: center; }
+
+.breadcrumb { padding: 14px 24px; font-size: 13px; color: var(--muted); max-width: 1440px; margin: 0 auto; }
+.breadcrumb a { color: var(--link); } .breadcrumb a:hover { text-decoration: underline; color: var(--link-hover); }
+
+.page-title { padding: 0 24px 8px; max-width: 1440px; margin: 0 auto; }
+.page-title h1 { font-size: 28px; font-weight: 800; letter-spacing: -.5px; }
+.page-title p { font-size: 14px; color: var(--muted); margin-top: 4px; margin-bottom: 24px; }
+
+.section { padding: 0 24px 48px; max-width: 1440px; margin: 0 auto; }
+.section h2 { font-size: 22px; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+
+.prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.prod-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: 1px solid #eee; transition: var(--transition); }
+.prod-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border); }
+.prod-card-img { aspect-ratio: 1; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.prod-card-img img { max-height: 160px; object-fit: contain; }
+.prod-card-info { padding: 16px 18px 20px; }
+.prod-card-info h4 { font-size: 14px; font-weight: 600; line-height: 1.35; margin-bottom: 8px; color: var(--text); min-height: 38px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-card-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+.prod-card-stars .stars { color: #de7921; font-size: 13px; letter-spacing: 1px; }
+.prod-card-stars .count { font-size: 12px; color: var(--link); }
+.prod-card-price { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+.prod-card-price .cents { font-size: 12px; vertical-align: super; }
+.prod-card-badge { display: inline-block; background: #cc0c39; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+.prod-card-ship { font-size: 12px; color: var(--muted); margin-bottom: 10px; }
+.prod-card-ship b { color: var(--text); }
+.prod-card-btn { display: block; width: 100%; background: var(--yellow); border: none; padding: 9px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: var(--transition); }
+.prod-card-btn:hover { background: var(--yellow-hover); }
+
+.ft { background: var(--dk2); color: #ddd; padding: 40px 24px; }
+.ft-inner { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.ft h4 { color: #fff; font-size: 15px; margin-bottom: 14px; }
+.ft a { display: block; font-size: 13px; color: #ddd; margin-bottom: 8px; transition: var(--transition); }
+.ft a:hover { color: #fff; text-decoration: underline; }
+.ft-bottom { background: var(--dk); padding: 20px; text-align: center; }
+.ft-bottom p { color: #999; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-logo"><b>amazon</b><small>business</small></div>
+  <div class="hd-loc">Deliver to<strong>Your Business</strong></div>
+  <div class="hd-search">
+    <select><option>All Departments</option></select>
+    <input placeholder="Search Logitech for Business">
+    <button><svg viewBox="0 0 24 24" fill="#333"><path d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/></svg></button>
+  </div>
+  <div class="hd-r">
+    <div>Hello, sign in<strong>Account & Lists</strong></div>
+    <div>Returns<strong>& Orders</strong></div>
+    <div class="cart"><span>&#128722;</span> Cart</div>
+  </div>
+</header>
+<div class="hd-sub">
+  <a href="#">All</a><a href="#">Business Analytics</a><a href="#">Buy Again</a><a href="#">Business Deals</a><a href="#">Manage Approval</a><a href="#">Business Prime</a>
+</div>
+
+<nav class="sn">
+  <a class="sn-brand" href="index.html">
+    <img src="assets/logos/logitech-business-official.svg" alt="Logitech for Business" style="height:22px;">
+
+  </a>
+  <div class="sn-links">
+    <a href="index.html">Home</a>
+    <a href="keyboards.html">Keyboards & Combos</a>
+    <a href="mice.html">Mice</a>
+    <a href="headsets.html" class="active">Headsets</a>
+    <a href="webcams.html">Webcams</a>
+    <a href="conferencing.html">Video Conferencing</a>
+  </div>
+</nav>
+
+<!-- HERO BANNER -->
+<div style="max-width:1440px; margin:0 auto; padding:16px 24px 0;">
+  <img src="assets/lifestyle/plp-headsets-banner.jpg" alt="Logitech Headsets" style="width:100%; border-radius:var(--card-radius); box-shadow:var(--shadow-md); object-fit:cover; max-height:400px;">
+</div>
+
+<div class="breadcrumb">
+  <a href="index.html">Logitech for Business</a> &rsaquo; <strong>Headsets & Earbuds</strong>
+</div>
+
+<div class="page-title">
+  <h1>Business Headsets & Earbuds</h1>
+  <p>Enterprise-certified headsets and earbuds with ANC, crystal-clear audio, and all-day comfort. Certified for Microsoft Teams, Zoom, and Google Meet.</p>
+</div>
+
+<!-- HEADSET SHOWCASE -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+  <div style="background:#f8f8f8; border-radius:12px; padding:32px 20px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-wireless-2-es.png" alt="" style="height:140px; object-fit:contain; margin:0 auto 16px;">
+    <h4 style="font-size:15px; font-weight:700; margin-bottom:4px;">Zone Wireless 2 ES</h4>
+    <p style="font-size:12px; color:var(--muted);">Advanced ANC &middot; Bluetooth &middot; Teams Certified</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:32px 20px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-wired-2.png" alt="" style="height:140px; object-fit:contain; margin:0 auto 16px;">
+    <h4 style="font-size:15px; font-weight:700; margin-bottom:4px;">Zone Wired 2</h4>
+    <p style="font-size:12px; color:var(--muted);">USB-C &middot; Noise-Canceling Mic &middot; Plug & Play</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:32px 20px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-vibe-wireless.png" alt="" style="height:140px; object-fit:contain; margin:0 auto 16px;">
+    <h4 style="font-size:15px; font-weight:700; margin-bottom:4px;">Zone Vibe Wireless</h4>
+    <p style="font-size:12px; color:var(--muted);">Lightweight &middot; Bluetooth &middot; All-Day Comfort</p>
+  </div>
+</div>
+
+<!-- HEADSET FEATURE IMAGES -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+  <img src="assets/lifestyle/zone2-features-1.png" alt="" style="width:100%; border-radius:12px; box-shadow:var(--shadow-md);">
+  <img src="assets/lifestyle/zone2-features-3.png" alt="" style="width:100%; border-radius:12px; box-shadow:var(--shadow-md);">
+</div>
+
+<!-- MORE HEADSET PRODUCTS -->
+<div style="max-width:1440px; margin:0 auto 32px; padding:0 24px; display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-305.png" alt="" style="height:110px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Zone 305</h4>
+    <p style="font-size:11px; color:var(--muted);">Lightweight wireless</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-true-wireless.png" alt="" style="height:110px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Zone True Wireless</h4>
+    <p style="font-size:11px; color:var(--muted);">True wireless earbuds</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/zone-wired-earbuds.png" alt="" style="height:110px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">Zone Wired Earbuds</h4>
+    <p style="font-size:11px; color:var(--muted);">USB-C wired earbuds</p>
+  </div>
+  <div style="background:#f8f8f8; border-radius:12px; padding:24px 16px; text-align:center; box-shadow:var(--shadow-sm);">
+    <img src="assets/products/h650e.png" alt="" style="height:110px; object-fit:contain; margin:0 auto 12px;">
+    <h4 style="font-size:13px; font-weight:600;">H650e</h4>
+    <p style="font-size:11px; color:var(--muted);">USB stereo headset</p>
+  </div>
+</div>
+
+<!-- HEADSET BEAUTY SHOTS -->
+<div style="max-width:1440px; margin:0 auto 48px; padding:0 24px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+  <img src="assets/lifestyle/zone2-beauty-2.png" alt="" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); background:#f8f8f8;">
+  <img src="assets/lifestyle/zone2-angle-3.png" alt="" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); background:#f8f8f8;">
+  <img src="assets/lifestyle/zone2-wearing.png" alt="" style="width:100%; border-radius:12px; box-shadow:var(--shadow-sm); background:#f8f8f8;">
+</div>
+
+<div class="section">
+  <h2>Wireless Headsets</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wireless-2-es.png" alt="Zone Wireless 2 Enterprise Series"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">Best Seller</span>
+        <h4>Logitech Zone Wireless 2 Enterprise Series Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">456</span></div>
+        <div class="prod-card-price">$299<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wireless-2.png" alt="Zone Wireless 2"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone Wireless 2 Bluetooth Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">328</span></div>
+        <div class="prod-card-price">$249<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wireless.png" alt="Zone Wireless"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone Wireless Bluetooth Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">1,987</span></div>
+        <div class="prod-card-price">$179<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-vibe-wireless.png" alt="Zone Vibe Wireless"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone Vibe Wireless Over-Ear Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">876</span></div>
+        <div class="prod-card-price">$99<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-305.png" alt="Zone 305"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone 305 Wireless Bluetooth Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">543</span></div>
+        <div class="prod-card-price">$79<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/h650e.png" alt="H650e"></div>
+      <div class="prod-card-info">
+        <h4>Logitech H650e USB Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">2,345</span></div>
+        <div class="prod-card-price">$79<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Wired Headsets & Earbuds</h2>
+  <div class="prod-grid">
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wired-2.png" alt="Zone Wired 2"></div>
+      <div class="prod-card-info">
+        <span class="prod-card-badge">New</span>
+        <h4>Logitech Zone Wired 2 USB Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">234</span></div>
+        <div class="prod-card-price">$129<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wired.png" alt="Zone Wired"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone Wired USB Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">1,456</span></div>
+        <div class="prod-card-price">$99<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-true-wireless.png" alt="Zone True Wireless"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone True Wireless Earbuds</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">789</span></div>
+        <div class="prod-card-price">$199<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/zone-wired-earbuds.png" alt="Zone Wired Earbuds"></div>
+      <div class="prod-card-info">
+        <h4>Logitech Zone Wired Earbuds</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">432</span></div>
+        <div class="prod-card-price">$69<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Wed, Apr 8</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-card-img"><img src="assets/products/h570e.png" alt="H570e"></div>
+      <div class="prod-card-info">
+        <h4>Logitech H570e USB Stereo Headset</h4>
+        <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">3,456</span></div>
+        <div class="prod-card-price">$49<span class="cents">99</span></div>
+        <div class="prod-card-ship">FREE delivery <b>Tomorrow</b></div>
+        <button class="prod-card-btn">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ft">
+  <div class="ft-inner">
+    <div><h4>Logitech for Business</h4><a href="#">About Logitech B2B</a><a href="#">Enterprise Solutions</a><a href="#">Case Studies</a><a href="#">Partner Program</a></div>
+    <div><h4>Product Categories</h4><a href="keyboards.html">Keyboards & Combos</a><a href="mice.html">Mice</a><a href="headsets.html">Headsets & Earbuds</a><a href="webcams.html">Webcams</a><a href="conferencing.html">Video Conferencing</a></div>
+    <div><h4>Resources</h4><a href="#">Room Configurator</a><a href="#">Logi Tune Software</a><a href="#">Logi Options+ App</a><a href="#">IT Deployment Guides</a></div>
+    <div><h4>Support</h4><a href="#">Business Support</a><a href="#">Warranty Info</a><a href="#">Contact Sales</a><a href="#">Returns & Exchanges</a></div>
+  </div>
+</footer>
+<div class="ft-bottom"><p>&copy; 2026 Logitech. All rights reserved. Logitech, Logi, and their logos are trademarks of Logitech.</p></div>
+</body>
+</html>

@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logitech for Business | Amazon Business Storefront</title>
+<style>
+:root {
+  --dk: #131921;
+  --dk2: #232f3e;
+  --green: #00a651;
+  --green-hover: #008c45;
+  --link: #007185;
+  --link-hover: #c7511f;
+  --orange: #febd69;
+  --yellow: #ffd814;
+  --yellow-hover: #f7ca00;
+  --border: #d5d9d9;
+  --text: #0f1111;
+  --muted: #565959;
+  --bg: #f7f7f7;
+  --bg-alt: #fafafa;
+  --card-radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 2px 8px rgba(0,0,0,.1);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.12);
+  --transition: all .2s ease;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Amazon Ember', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background: #fff; color: var(--text); font-size: 14px; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+/* ── AMAZON HEADER ── */
+.hd { background: var(--dk); padding: 8px 20px; display: flex; align-items: center; gap: 14px; }
+.hd-logo { flex-shrink: 0; }
+.hd-logo b { color: #00a8e1; font-size: 22px; font-style: italic; }
+.hd-logo small { color: #f90; font-size: 13px; font-weight: 700; font-style: italic; display: block; margin-top: -3px; }
+.hd-loc { color: #ccc; font-size: 11px; flex-shrink: 0; }
+.hd-loc strong { color: #fff; font-size: 13px; display: block; }
+.hd-search { flex: 1; display: flex; height: 40px; border-radius: 4px; overflow: hidden; }
+.hd-search select { background: #e6e6e6; border: none; padding: 0 8px; font-size: 11px; }
+.hd-search input { flex: 1; border: none; padding: 0 12px; font-size: 15px; outline: none; }
+.hd-search button { background: var(--orange); border: none; width: 46px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.hd-search svg { width: 20px; height: 20px; }
+.hd-r { display: flex; gap: 18px; align-items: center; flex-shrink: 0; }
+.hd-r div { color: #fff; font-size: 11px; line-height: 1.3; white-space: nowrap; }
+.hd-r div strong { font-size: 13px; display: block; }
+.hd-r .cart { font-size: 13px; font-weight: 700; }
+.hd-r .cart span { color: #f90; font-size: 18px; }
+.hd-sub { background: var(--dk2); padding: 6px 20px; display: flex; gap: 18px; overflow-x: auto; }
+.hd-sub a { color: #fff; font-size: 13px; white-space: nowrap; }
+.hd-sub a:hover { text-decoration: underline; }
+
+/* ── STORE NAV ── */
+.sn { background: #fff; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 24px; height: 52px; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.sn-brand { display: flex; align-items: center; gap: 10px; padding-right: 20px; border-right: 1px solid var(--border); height: 100%; }
+.sn-brand img { height: 26px; }
+.sn-brand span { font-size: 18px; font-weight: 700; color: var(--green); letter-spacing: -.3px; }
+.sn-links { display: flex; gap: 0; margin-left: 8px; height: 100%; }
+.sn-links a { display: flex; align-items: center; padding: 0 16px; font-size: 14px; font-weight: 500; color: var(--text); height: 100%; border-bottom: 3px solid transparent; transition: var(--transition); }
+.sn-links a:hover, .sn-links a.active { border-bottom-color: var(--green); color: var(--green); }
+
+/* ── HERO ── */
+.hero { width: 100%; position: relative; overflow: hidden; height: 420px; background: #111; }
+.hero video { width: 100%; height: 100%; object-fit: cover; }
+.hero img { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.3) 30%, transparent 55%); display: flex; align-items: center; padding-left: 72px; }
+.hero-overlay .brand { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 10px; opacity: .9; letter-spacing: 1px; }
+.hero-overlay h1 { font-size: 52px; font-weight: 200; color: #fff; line-height: 1.05; letter-spacing: -1px; }
+.hero-overlay h1 em { font-weight: 400; font-style: italic; }
+
+/* ── SECTIONS ── */
+.section { padding: 48px 24px; max-width: 1440px; margin: 0 auto; }
+.section-alt { background: var(--bg); }
+.section-title { font-size: 28px; font-weight: 800; color: var(--text); margin-bottom: 8px; letter-spacing: -.5px; }
+.section-subtitle { font-size: 15px; color: var(--muted); margin-bottom: 32px; font-weight: 400; }
+
+/* ── CATEGORY GRID ── */
+.cat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.cat-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; border: 1px solid transparent; }
+.cat-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--green); }
+.cat-card-img { aspect-ratio: 1; background: #f8f8f8; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.cat-card-img img { max-height: 120px; object-fit: contain; }
+.cat-card-info { padding: 14px 16px; border-top: 1px solid #f0f0f0; text-align: center; }
+.cat-card-info h3 { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.cat-card-info p { font-size: 12px; color: var(--muted); }
+
+/* ── WHAT'S NEW ── */
+.whats-new { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-md); }
+.wn-product { background: #f3f3f3; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 36px 32px; position: relative; }
+.wn-product .wn-badge { position: absolute; top: 20px; right: 20px; background: var(--green); color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; letter-spacing: .8px; }
+.wn-product h3 { font-size: 20px; font-weight: 600; margin-bottom: 16px; text-align: center; }
+.wn-product img { max-height: 200px; object-fit: contain; margin-bottom: 16px; }
+.wn-product p { font-size: 13px; color: var(--muted); text-align: center; max-width: 300px; line-height: 1.5; }
+.wn-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0; }
+.wn-gallery-img { overflow: hidden; }
+.wn-gallery-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.wn-gallery-img:hover img { transform: scale(1.05); }
+
+/* ── SHOP BY INTEREST ── */
+.interest-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-bottom: 32px; align-items: stretch; }
+.interest-row.reverse { grid-template-columns: 1fr 1.2fr; }
+.interest-row.reverse .interest-hero { order: 2; }
+.interest-row.reverse .interest-products { order: 1; }
+.interest-hero { border-radius: var(--card-radius); overflow: hidden; position: relative; min-height: 340px; }
+.interest-hero img { width: 100%; height: 100%; object-fit: cover; }
+.interest-hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 28px 24px; background: linear-gradient(transparent, rgba(0,0,0,.7)); }
+.interest-hero-overlay h3 { color: #fff; font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.interest-hero-overlay p { color: rgba(255,255,255,.85); font-size: 13px; }
+.interest-products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.interest-prod-card { background: #fff; border-radius: var(--card-radius); padding: 20px 12px 14px; display: flex; flex-direction: column; align-items: center; box-shadow: var(--shadow-sm); transition: var(--transition); border: 1px solid #eee; }
+.interest-prod-card:hover { box-shadow: var(--shadow-md); border-color: var(--green); }
+.interest-prod-card img { height: 100px; object-fit: contain; margin-bottom: 10px; }
+.interest-prod-card span { font-size: 12px; font-weight: 600; text-align: center; line-height: 1.3; }
+
+/* ── FULL-WIDTH BANNER ── */
+.fw-banner { border-radius: var(--card-radius); overflow: hidden; position: relative; margin-bottom: 32px; }
+.fw-banner img { width: 100%; display: block; }
+.fw-banner-overlay { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 56px; background: linear-gradient(90deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,.2) 40%, transparent 65%); }
+.fw-banner-overlay h3 { color: #fff; font-size: 28px; font-weight: 700; line-height: 1.2; max-width: 400px; }
+.fw-banner-overlay p { color: rgba(255,255,255,.85); font-size: 14px; margin-top: 8px; max-width: 360px; }
+.fw-banner-overlay .btn { display: inline-block; margin-top: 16px; background: var(--yellow); color: var(--text); font-size: 13px; font-weight: 700; padding: 10px 28px; border-radius: 20px; transition: var(--transition); }
+.fw-banner-overlay .btn:hover { background: var(--yellow-hover); }
+
+/* ── SPLIT BANNER ── */
+.split-banner { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.split-card { border-radius: var(--card-radius); overflow: hidden; position: relative; min-height: 240px; }
+.split-card img { width: 100%; height: 100%; object-fit: cover; }
+.split-card-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; background: linear-gradient(transparent 40%, rgba(0,0,0,.7)); }
+.split-card-overlay h4 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.split-card-overlay p { color: rgba(255,255,255,.8); font-size: 13px; }
+
+/* ── TRIO BANNER ── */
+.trio-banner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.trio-banner .trio-main { border-radius: var(--card-radius); overflow: hidden; position: relative; min-height: 300px; }
+.trio-banner .trio-main img { width: 100%; height: 100%; object-fit: cover; }
+.trio-banner .trio-side { border-radius: var(--card-radius); overflow: hidden; position: relative; }
+.trio-banner .trio-side img { width: 100%; height: 100%; object-fit: cover; }
+.trio-ov { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; background: linear-gradient(transparent 50%, rgba(0,0,0,.7)); }
+.trio-ov h4 { color: #fff; font-size: 16px; font-weight: 700; }
+.trio-ov p { color: rgba(255,255,255,.75); font-size: 12px; }
+
+/* ── MEETING ROOMS ── */
+.meeting-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.meeting-card { border-radius: var(--card-radius); overflow: hidden; position: relative; aspect-ratio: 4/3; cursor: pointer; }
+.meeting-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.meeting-card:hover img { transform: scale(1.05); }
+.meeting-card-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+.meeting-card-overlay h4 { color: #fff; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.meeting-card-overlay p { color: rgba(255,255,255,.8); font-size: 12px; }
+
+/* ── PRODUCT CARDS GRID ── */
+.prod-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.prod-card { background: #fff; border-radius: var(--card-radius); overflow: hidden; border: 1px solid #eee; transition: var(--transition); }
+.prod-card:hover { box-shadow: var(--shadow-lg); border-color: var(--border); }
+.prod-card-img { aspect-ratio: 1; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.prod-card-img img { max-height: 140px; object-fit: contain; }
+.prod-card-info { padding: 14px 16px 18px; }
+.prod-card-info h4 { font-size: 14px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; color: var(--text); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-card-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+.prod-card-stars .stars { color: #de7921; font-size: 13px; letter-spacing: 1px; }
+.prod-card-stars .count { font-size: 12px; color: var(--link); }
+.prod-card-price { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+.prod-card-price .cents { font-size: 12px; vertical-align: super; }
+.prod-card-btn { display: block; width: 100%; background: var(--yellow); border: none; padding: 8px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; transition: var(--transition); }
+.prod-card-btn:hover { background: var(--yellow-hover); }
+
+/* ── PLATFORM PARTNERS ── */
+.partner-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.partner-card { border-radius: var(--card-radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); cursor: pointer; }
+.partner-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.partner-card img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #f8f8f8; padding: 16px; }
+.partner-card-info { padding: 16px; background: #fff; }
+.partner-card-info h4 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+.partner-card-info p { font-size: 13px; color: var(--muted); }
+
+/* ── RESOURCES ── */
+.res-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.res-card-img { border-radius: var(--card-radius); overflow: hidden; position: relative; aspect-ratio: 4/3; display: block; box-shadow: var(--shadow-sm); transition: var(--transition); }
+.res-card-img:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.res-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.res-card-img:hover img { transform: scale(1.05); }
+.res-card-ov { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 16px; background: linear-gradient(transparent, rgba(0,0,0,.8)); }
+.res-card-ov h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 2px; }
+.res-card-ov p { color: rgba(255,255,255,.75); font-size: 12px; }
+
+/* ── FOOTER ── */
+.ft { background: var(--dk2); color: #ddd; padding: 40px 24px; margin-top: 0; }
+.ft-inner { max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.ft h4 { color: #fff; font-size: 15px; margin-bottom: 14px; }
+.ft a { display: block; font-size: 13px; color: #ddd; margin-bottom: 8px; transition: var(--transition); }
+.ft a:hover { color: #fff; text-decoration: underline; }
+.ft-bottom { background: var(--dk); padding: 20px; text-align: center; }
+.ft-bottom p { color: #999; font-size: 12px; }
+
+/* ── STATS BAR ── */
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--dk2); }
+.stat { padding: 36px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+.stat:last-child { border-right: none; }
+.stat .num { font-size: 36px; font-weight: 800; color: var(--green); margin-bottom: 6px; }
+.stat p { color: rgba(255,255,255,.8); font-size: 13px; line-height: 1.4; }
+
+/* ── DISCOUNT BANNER ── */
+.discount-banner { background: linear-gradient(135deg, #f0f8f0 0%, #e2f0e2 100%); padding: 48px 24px; text-align: center; border-top: 3px solid var(--green); }
+.discount-banner h2 { font-size: 32px; font-weight: 300; font-style: italic; color: var(--text); margin-bottom: 6px; }
+.discount-banner p { font-size: 16px; color: var(--green); font-weight: 700; letter-spacing: .5px; }
+
+/* ── CTA BANNER ── */
+.cta-banner { background: linear-gradient(135deg, #00a651 0%, #007d3e 100%); padding: 48px 24px; text-align: center; }
+.cta-banner h2 { color: #fff; font-size: 30px; font-weight: 800; margin-bottom: 10px; }
+.cta-banner p { color: rgba(255,255,255,.9); font-size: 16px; margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cta-banner a { display: inline-block; background: #fff; color: var(--green); font-size: 15px; font-weight: 700; padding: 12px 36px; border-radius: 24px; transition: var(--transition); }
+.cta-banner a:hover { background: #f0f0f0; transform: translateY(-1px); }
+</style>
+</head>
+<body>
+
+<!-- ══ AMAZON HEADER ══ -->
+<header class="hd">
+  <div class="hd-logo"><b style="color:#00a8e1;font-size:24px;font-style:italic;">business</b><small style="color:#f90;font-size:15px;font-weight:700;font-style:italic;display:block;margin-top:-4px;">prime</small></div>
+  <div class="hd-loc" style="display:flex;align-items:center;gap:6px;">
+    <span style="font-size:16px;">&#9678;</span>
+    <div>Delivering to Palatine 60074<br><strong>Update location</strong></div>
+  </div>
+  <div class="hd-search">
+    <select><option>All</option></select>
+    <input placeholder="Search Amazon Business">
+    <button style="background:#3665f3;border-radius:0 4px 4px 0;"><svg viewBox="0 0 24 24" fill="#fff"><path d="M10 2a8 8 0 015.29 13.71l4.5 4.5-1.42 1.42-4.5-4.5A8 8 0 1110 2zm0 2a6 6 0 100 12 6 6 0 000-12z"/></svg></button>
+  </div>
+  <div class="hd-r">
+    <div style="display:flex;align-items:center;gap:4px;"><span style="font-size:14px;">EN</span></div>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <span style="color:#e47911;font-size:18px;">&#128276;</span>
+      <div>Hello, STA<strong>Account for Qodago LLC &#9662;</strong></div>
+    </div>
+    <div>Returns<strong>&amp; Orders</strong></div>
+    <div class="cart"><span>5</span> &#128722;</div>
+  </div>
+</header>
+<div class="hd-sub">
+  <a href="#">&#9776; All</a><a href="#">Get the app &#9662;</a><a href="#">Business Essentials</a><a href="#">Same-Day Delivery</a><a href="#">Tax Supplies</a><a href="#">Climate Pledge Friendly</a><a href="#">Buy Again</a><a href="#" style="margin-left:auto;">Get same-day delivery</a><a href="#">Lists &#9662;</a><a href="#" style="color:#f90;font-weight:700;">Business Prime &#9662;</a>
+</div>
+
+<!-- ══ STORE NAV ══ -->
+<nav class="sn">
+  <a class="sn-brand" href="index.html">
+    <img src="assets/logos/logitech-business-official.svg" alt="Logitech for Business" style="height:22px;">
+  </a>
+  <div class="sn-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="keyboards.html">Keyboards & Combos</a>
+    <a href="mice.html">Mice</a>
+    <a href="headsets.html">Headsets</a>
+    <a href="webcams.html">Webcams</a>
+    <a href="conferencing.html">Video Conferencing</a>
+  </div>
+</nav>
+
+<!-- ══ HERO BANNER ══ -->
+<section class="hero">
+  <video autoplay muted loop playsinline poster="assets/hero/hero-desktop.jpg">
+    <source src="assets/hero/hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay">
+    <div>
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+        <img src="assets/logos/logitech-white.svg" alt="Logitech" style="width:140px;">
+        <span style="width:1px; height:24px; background:rgba(255,255,255,.5);"></span>
+        <span style="color:#fff; font-size:16px; font-weight:400; letter-spacing:.5px; opacity:.9;">for business</span>
+      </div>
+      <h1>The New Logic<br><em>of Work</em></h1>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS BAR ══ -->
+<div class="stats-bar">
+  <div class="stat"><div class="num">71%</div><p>of the Global 500 Index use Logitech</p></div>
+  <div class="stat"><div class="num">300M+</div><p>products deployed worldwide in business</p></div>
+  <div class="stat"><div class="num">40+</div><p>years of enterprise hardware innovation</p></div>
+  <div class="stat"><div class="num">100+</div><p>countries with Logitech business solutions</p></div>
+</div>
+
+<!-- ══ SHOP BY CATEGORY ══ -->
+<div class="section">
+  <h2 class="section-title">Shop by Category</h2>
+  <p class="section-subtitle">Equip every workspace with professional-grade peripherals</p>
+  <div class="cat-grid">
+    <a class="cat-card" href="keyboards.html">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-keyboards.png" alt="Keyboards" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Keyboards & Combos</h3><p>18 products</p></div>
+    </a>
+    <a class="cat-card" href="mice.html">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-mice.png" alt="Mice" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Mice</h3><p>11 products</p></div>
+    </a>
+    <a class="cat-card" href="headsets.html">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-headsets.png" alt="Headsets" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Headsets & Earbuds</h3><p>11 products</p></div>
+    </a>
+    <a class="cat-card" href="webcams.html">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-webcams.png" alt="Webcams" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Webcams</h3><p>8 products</p></div>
+    </a>
+    <a class="cat-card" href="conferencing.html">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-conference-cams.png" alt="Conference Cameras" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Video Conferencing</h3><p>14 products</p></div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-card-img"><img src="assets/lifestyle/b2b-products-presenters.png" alt="Presenters" style="max-height:none;width:100%;padding:0;"></div>
+      <div class="cat-card-info"><h3>Presenters</h3><p>2 products</p></div>
+    </a>
+  </div>
+</div>
+
+<!-- ══ PRODUCT VIDEO ══ -->
+<div class="section">
+  <div style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-md);">
+    <video autoplay muted loop playsinline style="width:100%; display:block;">
+      <source src="assets/hero/amz-product-video.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<!-- ══ WHAT'S NEW ══ -->
+<div class="section-alt">
+  <div class="section">
+    <h2 class="section-title">What's New</h2>
+    <p class="section-subtitle">The latest additions to the Logitech for Business portfolio</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px;">
+      <div style="background:#f3f3f3; border-radius:var(--card-radius); padding:32px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative;">
+        <span style="position:absolute;top:16px;right:16px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;">NEW</span>
+        <img src="assets/products/mx-master-4-biz.png" alt="" style="height:160px;object-fit:contain;margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;margin-bottom:6px;">MX Master 4 for Business</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.4;">8K DPI sensor with AI-enhanced smart actions</p>
+      </div>
+      <div style="background:#f3f3f3; border-radius:var(--card-radius); padding:32px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative;">
+        <span style="position:absolute;top:16px;right:16px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;">NEW</span>
+        <img src="assets/products/k980-solar-biz.png" alt="" style="height:160px;object-fit:contain;margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;margin-bottom:6px;">Signature Slim Solar+ K980</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.4;">Solar-powered wireless keyboard for business</p>
+      </div>
+      <div style="background:#f3f3f3; border-radius:var(--card-radius); padding:32px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; position:relative;">
+        <span style="position:absolute;top:16px;right:16px;background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:.5px;">NEW</span>
+        <img src="assets/products/zone-wireless-2-es.png" alt="" style="height:160px;object-fit:contain;margin-bottom:16px;">
+        <h4 style="font-size:16px;font-weight:700;margin-bottom:6px;">Zone Wireless 2 ES</h4>
+        <p style="font-size:13px;color:var(--muted);line-height:1.4;">AI-powered noise canceling, certified for Teams</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ SHOP BY INTEREST ══ -->
+<div class="section">
+  <h2 class="section-title">Shop by Interest</h2>
+  <p class="section-subtitle">Tailored solutions for every work scenario</p>
+
+  <div class="interest-row">
+    <div class="interest-hero">
+      <img src="assets/lifestyle/hp-personal-workspaces-bg.png" alt="Personal Workspaces">
+      <div class="interest-hero-overlay">
+        <h3>Personal Workspaces</h3>
+        <p>Premium peripherals for individual productivity</p>
+      </div>
+    </div>
+    <div class="interest-products">
+      <a class="interest-prod-card" href="keyboards.html">
+        <img src="assets/products/mx-keys-s.png" alt="MX Keys S">
+        <span>MX Keys S</span>
+      </a>
+      <a class="interest-prod-card" href="mice.html">
+        <img src="assets/products/mx-master-3s-biz.png" alt="MX Master 3S">
+        <span>MX Master 3S for Business</span>
+      </a>
+      <a class="interest-prod-card" href="webcams.html">
+        <img src="assets/products/mx-brio-705.png" alt="MX Brio 705">
+        <span>MX Brio 705</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="interest-row reverse">
+    <div class="interest-hero">
+      <img src="assets/lifestyle/hp-team-workspaces-bg.png" alt="Team Workspaces">
+      <div class="interest-hero-overlay">
+        <h3>Team Workspaces</h3>
+        <p>Collaboration tools for open offices and shared spaces</p>
+      </div>
+    </div>
+    <div class="interest-products">
+      <a class="interest-prod-card" href="headsets.html">
+        <img src="assets/products/zone-wireless-2.png" alt="Zone Wireless 2">
+        <span>Zone Wireless 2</span>
+      </a>
+      <a class="interest-prod-card" href="keyboards.html">
+        <img src="assets/products/mk950-combo-biz.png" alt="MK950 Combo">
+        <span>MK950 Combo for Business</span>
+      </a>
+      <a class="interest-prod-card" href="mice.html">
+        <img src="assets/products/lift-biz.png" alt="Lift for Business">
+        <span>Lift for Business</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="interest-row">
+    <div class="interest-hero">
+      <img src="assets/lifestyle/hp-mobile-remote-bg.png" alt="Mobile & Remote">
+      <div class="interest-hero-overlay">
+        <h3>Mobile & Remote</h3>
+        <p>Compact solutions for work from anywhere</p>
+      </div>
+    </div>
+    <div class="interest-products">
+      <a class="interest-prod-card" href="mice.html">
+        <img src="assets/products/mx-anywhere-3s-biz.png" alt="MX Anywhere 3S">
+        <span>MX Anywhere 3S for Business</span>
+      </a>
+      <a class="interest-prod-card" href="headsets.html">
+        <img src="assets/products/zone-305.png" alt="Zone 305">
+        <span>Zone 305</span>
+      </a>
+      <a class="interest-prod-card" href="webcams.html">
+        <img src="assets/products/brio-305.png" alt="Brio 305">
+        <span>Brio 305</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 1. MX SERIES FULL-WIDTH BANNER ══ -->
+<div class="fw-banner" style="border-radius:0;">
+  <img src="assets/lifestyle/amz-mx-series-banner.jpg" alt="MX Series" style="width:100%; display:block;">
+</div>
+
+<!-- ══ 2. ENTERPRISE MEETING ROOMS ══ -->
+<div class="section-alt">
+  <div class="section">
+    <h2 class="section-title">Enterprise Meeting Solutions</h2>
+    <p class="section-subtitle">Purpose-built video conferencing for every room type</p>
+    <div class="meeting-grid">
+      <a class="meeting-card" href="conferencing.html">
+        <img src="assets/lifestyle/meeting-conference-room.jpg" alt="Conference Room">
+        <div class="meeting-card-overlay">
+          <h4>Conference Rooms</h4>
+          <p>Rally Bar &middot; Rally AI Camera Pro</p>
+        </div>
+      </a>
+      <a class="meeting-card" href="conferencing.html">
+        <img src="assets/lifestyle/meeting-huddle-wide.jpg" alt="Huddle Space">
+        <div class="meeting-card-overlay">
+          <h4>Huddle Spaces</h4>
+          <p>Rally Bar Huddle &middot; MeetUp 2</p>
+        </div>
+      </a>
+      <a class="meeting-card" href="conferencing.html">
+        <img src="assets/lifestyle/meeting-ideation-wide.jpg" alt="Ideation Space">
+        <div class="meeting-card-overlay">
+          <h4>Ideation Spaces</h4>
+          <p>Rally Board 65 &middot; Scribe</p>
+        </div>
+      </a>
+      <a class="meeting-card" href="conferencing.html">
+        <img src="assets/lifestyle/meeting-immersive-wide.jpg" alt="Immersive Rooms">
+        <div class="meeting-card-overlay">
+          <h4>Immersive Rooms</h4>
+          <p>Sight &middot; Rally Bar &middot; Tap IP</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 3. SHOWCASE PAIR ══ -->
+<div class="section">
+  <div class="split-banner">
+    <div class="split-card" style="min-height:auto;">
+      <img src="assets/lifestyle/amz-showcase-1.png" alt="Product Showcase" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+    </div>
+    <div class="split-card" style="min-height:auto;">
+      <img src="assets/lifestyle/amz-showcase-2.png" alt="Product Showcase" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+    </div>
+  </div>
+</div>
+
+<!-- ══ 4. PLATFORM PARTNERS ══ -->
+<div class="section">
+  <h2 class="section-title">Certified for Your Platform</h2>
+  <p class="section-subtitle">Logitech solutions certified for the platforms you already use</p>
+  <div class="partner-row">
+    <a class="partner-card" href="conferencing.html">
+      <img src="assets/lifestyle/promo-microsoft-rooms.jpg" alt="Microsoft Teams Rooms">
+      <div class="partner-card-info"><h4>Microsoft Teams Rooms</h4><p>Certified devices for seamless Teams integration</p></div>
+    </a>
+    <a class="partner-card" href="conferencing.html">
+      <img src="assets/lifestyle/promo-google-rooms.jpg" alt="Google Meet Rooms">
+      <div class="partner-card-info"><h4>Google Meet Rooms</h4><p>Purpose-built for Google Workspace</p></div>
+    </a>
+    <a class="partner-card" href="conferencing.html">
+      <img src="assets/lifestyle/promo-zoom-rooms.jpg" alt="Zoom Rooms">
+      <div class="partner-card-info"><h4>Zoom Rooms</h4><p>Native Zoom Rooms hardware solutions</p></div>
+    </a>
+  </div>
+</div>
+
+<!-- ══ 5. FULL-WIDTH BANNER 2 ══ -->
+<div class="fw-banner" style="border-radius:0;">
+  <img src="assets/lifestyle/amz-banner-2.png" alt="Logitech for Business" style="width:100%; display:block;">
+</div>
+
+<!-- ══ 6. HALF-WIDTH PAIR 1 ══ -->
+<div class="section">
+  <div class="split-banner">
+    <div class="split-card" style="min-height:auto;">
+      <img src="assets/lifestyle/amz-half-1.png" alt="Logitech Solutions" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+    </div>
+    <div class="split-card" style="min-height:auto;">
+      <img src="assets/lifestyle/amz-half-2.png" alt="Logitech Solutions" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+    </div>
+  </div>
+</div>
+
+<!-- ══ 7. FEATURED PRODUCTS ══ -->
+<div class="section-alt">
+  <div class="section">
+    <h2 class="section-title">Featured Products</h2>
+    <p class="section-subtitle">Best sellers across the Logitech for Business portfolio</p>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/mx-master-4-biz.png" alt="MX Master 4"></div>
+        <div class="prod-card-info">
+          <h4>Logitech MX Master 4 for Business</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">142</span></div>
+          <div class="prod-card-price">$109<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/mx-keys-s.png" alt="MX Keys S"></div>
+        <div class="prod-card-info">
+          <h4>Logitech MX Keys S Wireless Keyboard</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">1,847</span></div>
+          <div class="prod-card-price">$99<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/zone-wireless-2.png" alt="Zone Wireless 2"></div>
+        <div class="prod-card-info">
+          <h4>Logitech Zone Wireless 2 Headset</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">328</span></div>
+          <div class="prod-card-price">$249<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/mx-brio-705.png" alt="MX Brio 705"></div>
+        <div class="prod-card-info">
+          <h4>Logitech MX Brio 705 4K Webcam</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">567</span></div>
+          <div class="prod-card-price">$199<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/rally-bar.png" alt="Rally Bar"></div>
+        <div class="prod-card-info">
+          <h4>Logitech Rally Bar Video Conference System</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">89</span></div>
+          <div class="prod-card-price">$2,999<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/ergo-k860-biz.png" alt="ERGO K860"></div>
+        <div class="prod-card-info">
+          <h4>Logitech ERGO K860 for Business</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">6,789</span></div>
+          <div class="prod-card-price">$109<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/lift-biz.png" alt="Lift"></div>
+        <div class="prod-card-info">
+          <h4>Logitech Lift for Business Vertical Mouse</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span><span class="count">3,201</span></div>
+          <div class="prod-card-price">$69<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/zone-wired-2.png" alt="Zone Wired 2"></div>
+        <div class="prod-card-info">
+          <h4>Logitech Zone Wired 2 for Business</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">567</span></div>
+          <div class="prod-card-price">$99<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/brio-505.png" alt="Brio 505"></div>
+        <div class="prod-card-info">
+          <h4>Logitech Brio 505 HD Webcam</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">2,089</span></div>
+          <div class="prod-card-price">$107<span class="cents">99</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="prod-card-img"><img src="assets/products/meetup-2.png" alt="MeetUp 2"></div>
+        <div class="prod-card-info">
+          <h4>Logitech MeetUp 2 Conference Camera</h4>
+          <div class="prod-card-stars"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="count">445</span></div>
+          <div class="prod-card-price">$999<span class="cents">00</span></div>
+          <button class="prod-card-btn">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 8. FULL-WIDTH BANNER 3 ══ -->
+<div class="fw-banner" style="border-radius:0;">
+  <img src="assets/lifestyle/amz-banner-3.png" alt="Logitech for Business" style="width:100%; display:block;">
+</div>
+
+<!-- ══ 9. LIFESTYLE PHOTO GRID ══ -->
+<div class="section">
+  <h2 class="section-title">Designed for Modern Work</h2>
+  <p class="section-subtitle">See Logitech in action across real workspaces</p>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-md);">
+      <img src="assets/lifestyle/amz-lifestyle-1.jpg" alt="Workspace lifestyle" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+    <div style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-md);">
+      <img src="assets/lifestyle/amz-lifestyle-2.jpg" alt="Workspace lifestyle" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+    <div style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-md);">
+      <img src="assets/lifestyle/amz-lifestyle-3.jpg" alt="Workspace lifestyle" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+    <div style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-md);">
+      <img src="assets/lifestyle/amz-lifestyle-4.jpg" alt="Workspace lifestyle" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+  </div>
+</div>
+
+<!-- ══ 10. HALF-WIDTH PAIR 2 ══ -->
+<div class="section-alt">
+  <div class="section">
+    <div class="split-banner" style="margin-bottom:0;">
+      <div class="split-card" style="min-height:auto;">
+        <img src="assets/lifestyle/amz-half-3.png" alt="Logitech Solutions" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+      </div>
+      <div class="split-card" style="min-height:auto;">
+        <img src="assets/lifestyle/amz-half-4.png" alt="Logitech Solutions" style="width:100%; height:auto; object-fit:cover; border-radius:var(--card-radius);">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 11. RESOURCES ══ -->
+<div class="section">
+  <h2 class="section-title">Resources & Tools</h2>
+  <p class="section-subtitle">Configure, manage, and deploy with ease</p>
+  <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;">
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-1.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-2.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-3.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-4.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-top:16px;">
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-5.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-6.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+    <a href="#" style="border-radius:var(--card-radius); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); display:block;">
+      <img src="assets/lifestyle/amz-tile-7.png" alt="Resource" style="width:100%; aspect-ratio:1; object-fit:cover; display:block;">
+    </a>
+  </div>
+</div>
+
+<!-- ══ CTA BANNER ══ -->
+<div class="cta-banner">
+  <h2>Ready to Equip Your Workforce?</h2>
+  <p>Enterprise pricing, quantity discounts, and bulk ordering available exclusively for business customers.</p>
+  <a href="#">Contact Logitech for Business</a>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="ft">
+  <div class="ft-inner">
+    <div>
+      <h4>Logitech for Business</h4>
+      <a href="#">About Logitech B2B</a>
+      <a href="#">Enterprise Solutions</a>
+      <a href="#">Case Studies</a>
+      <a href="#">Partner Program</a>
+    </div>
+    <div>
+      <h4>Product Categories</h4>
+      <a href="keyboards.html">Keyboards & Combos</a>
+      <a href="mice.html">Mice</a>
+      <a href="headsets.html">Headsets & Earbuds</a>
+      <a href="webcams.html">Webcams</a>
+      <a href="conferencing.html">Video Conferencing</a>
+    </div>
+    <div>
+      <h4>Resources</h4>
+      <a href="#">Room Configurator</a>
+      <a href="#">Logi Tune Software</a>
+      <a href="#">Logi Options+ App</a>
+      <a href="#">IT Deployment Guides</a>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">Business Support</a>
+      <a href="#">Warranty Info</a>
+      <a href="#">Contact Sales</a>
+      <a href="#">Returns & Exchanges</a>
+    </div>
+  </div>
+</footer>
+<div class="ft-bottom"><p>&copy; 2026 Logitech. All rights reserved. Logitech, Logi, and their logos are trademarks of Logitech.</p></div>
+
+</body>
+</html>
